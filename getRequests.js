@@ -41,7 +41,6 @@ function createGetRequests(app) {
     // } 
 
     sendGetPrintResult("cmd/{'c':7}")
-
 }
 
 
@@ -69,8 +68,9 @@ class RouterGetterSetter {
 }
 
 function createRouting(app) {
-    new RouterGetterSetter(app,'setPixyData','getPixyData',"")
+    new RouterGetterSetter(app,'setPixyData','getPixyData',"{'c':0}")
     new RouterGetterSetter(app,'setLidarData','getLidarData',"0")
+    
 }
 
 
