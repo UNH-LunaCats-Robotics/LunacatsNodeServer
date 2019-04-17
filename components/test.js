@@ -1,6 +1,6 @@
 import React from "../react/build/react.js";
-import ReactDOM from "../react/build/react-dom.js";
-import counter from 'counter.js'
+//import ReactDOM from "../react/build/react-dom.js";
+//import counter from 'counter.js'
 
 //"use strict";
 
