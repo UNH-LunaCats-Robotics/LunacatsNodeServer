@@ -4,12 +4,7 @@ const https = require('http');
 const IP = "http://10.0.10.10:5000/"
 
 function printResult() {
-  try {
-    console.log(JSON.parse(data));
-  }
-  catch {
-    console.log("An error ouccoured while reading the json, Got:\n"+data)
-  }
+  console.log("Got it!")
 }
 
 
@@ -40,7 +35,7 @@ function createGetRequests(app) {
     // for (i = 0; i < 1000; i++) {
     // } 
 
-    sendGetPrintResult("cmd/{'c':7}")
+    // sendGetPrintResult("cmd/{'c':7}")
 }
 
 
@@ -66,6 +61,7 @@ class RouterGetterSetter {
     }
 
 }
+
 
 function createRouting(app) {
     new RouterGetterSetter(app,'setPixyData','getPixyData',"{'c':0}")
