@@ -3,10 +3,6 @@ const https = require('http');
 
 const IP = "http://10.0.10.10:5000/"
 
-function printResult() {
-  console.log("Got it!")
-}
-
 
 async function sendGetPrintResult(getToSend) {
   console.log("Sending:\t"+ IP+getToSend)
@@ -19,7 +15,9 @@ async function sendGetPrintResult(getToSend) {
       data += chunk;
     });
     // The whole response has been received. Print out the result.
-    resp.on('end', printResult());
+    resp.on('end',(data) => {
+      console.log("Got it!")
+    });
 
   }).on("error", (err) => {
       console.log(err)
@@ -35,7 +33,7 @@ function createGetRequests(app) {
     // for (i = 0; i < 1000; i++) {
     // } 
 
-    // sendGetPrintResult("cmd/{'c':7}")
+    sendGetPrintResult("cmd/{'c':8}")
 }
 
 
