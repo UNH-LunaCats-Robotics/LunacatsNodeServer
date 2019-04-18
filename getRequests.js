@@ -4,66 +4,57 @@ const https = require('http');
 const IP = "http://10.0.10.10:5000/"
 
 
-async function sendGetPrintResult(getToSend) {
-  console.log("Sending:\t"+ IP+getToSend)
+async function sendGetPrintResult(getToSend,logger) {
+  console.log("Sending:\t" + IP + getToSend)
 
   // This has sucsussfully Posted and got data
-  https.get(IP+getToSend, (resp) => {
+  https.get(IP + getToSend, (resp) => {
     let data = '';
     // A chunk of data has been recieved.
     resp.on('data', (chunk) => {
       data += chunk;
     });
     // The whole response has been received. Print out the result.
-    resp.on('end',(data) => {
-      console.log("Got it!")
+    resp.on('end', (data) => {
+      logger.log("Got it!")
     });
 
   }).on("error", (err) => {
-      console.log(err)
-      console.log("Error: " + err.message);
+    logger.log(err)
+    logger.log("Error: " + err.message);
   });
 
 }
 
 //You can do it!
-function createGetRequests(app) {
-    sendGetPrintResult("sendPixyData")
-    // for (i = 0; i < 1000; i++) {
-    // } 
-
-    sendGetPrintResult("cmd/{'c':8}")
+function createGetRequests(logger) {
+  sendGetPrintResult("sendPixyData", logger)
+  // for (i = 0; i < 1000; i++) {
+  // } 
 }
-
-
-
-var pixyInfo = "{'c':0}"
 
 class ResponseGeneratorForGetterAndSetter {
-    // This creates a new path for http get responses, and it allows you to get and set a variable on the server.
-    //It also allows you to use your own variable for the get and set responses if you want
-    constructor(app, setPath, getPath, data) {
+  // This creates a new path for http get responses, and it allows you to get and set a variable on the server.
+  //It also allows you to use your own variable for the get and set responses if you want
+  constructor(app, setPath, getPath, data, logger) {
 
-        app.get('/'+setPath+'/:data', function (req, res) {
-            data = req.params.data
+    app.get('/' + setPath + '/:data', function (req, res) {
+      data = req.params.data
+      logger.log("Got:" + req.params.data);
+      res.send("")
+    })
 
-            console.log("Got:" + req.params.data);
-            res.send("")
-        })
-          
-        app.get('/'+getPath+'/', function (req, res) {
-            console.log("sending info");
-            res.send(data)
-        })
-    }
+    app.get('/' + getPath + '/', function (req, res) {
+      logger.log("sending info");
+      res.send(data)
+    })
+  }
 
 }
 
-
-function createRouting(app) {
-    new ResponseGeneratorForGetterAndSetter(app,'setPixyData','getPixyData',"{'c':0}")
-    new ResponseGeneratorForGetterAndSetter(app,'setLidarData','getLidarData',"0")
-    
+function createRouting(app, logger) {
+  new ResponseGeneratorForGetterAndSetter(app, 'setPixyData', 'getPixyData', "{'c':0}", logger)
+  new ResponseGeneratorForGetterAndSetter(app, 'setLidarData', 'getLidarData', "0", logger)
 }
 
 
