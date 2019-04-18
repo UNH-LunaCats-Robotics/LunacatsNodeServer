@@ -26,10 +26,9 @@ async function sendGetPrintResult(getToSend) {
 
 }
 
-
+//You can do it!
 function createGetRequests(app) {
-    // sendGetPrintResult("sendPixyData")
-
+    sendGetPrintResult("sendPixyData")
     // for (i = 0; i < 1000; i++) {
     // } 
 
@@ -40,7 +39,7 @@ function createGetRequests(app) {
 
 var pixyInfo = "{'c':0}"
 
-class RouterGetterSetter {
+class ResponseGeneratorForGetterAndSetter {
     // This creates a new path for http get responses, and it allows you to get and set a variable on the server.
     //It also allows you to use your own variable for the get and set responses if you want
     constructor(app, setPath, getPath, data) {
@@ -62,8 +61,8 @@ class RouterGetterSetter {
 
 
 function createRouting(app) {
-    new RouterGetterSetter(app,'setPixyData','getPixyData',"{'c':0}")
-    new RouterGetterSetter(app,'setLidarData','getLidarData',"0")
+    new ResponseGeneratorForGetterAndSetter(app,'setPixyData','getPixyData',"{'c':0}")
+    new ResponseGeneratorForGetterAndSetter(app,'setLidarData','getLidarData',"0")
     
 }
 
