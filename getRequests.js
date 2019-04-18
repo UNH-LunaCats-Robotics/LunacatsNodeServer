@@ -69,5 +69,4 @@ function createRouting(app) {
 
 
 module.exports.createGetRequests = createGetRequests
-
 module.exports.createRouting = createRouting
