@@ -1,0 +1,101 @@
+* {
+    color: gray;
+    width: 100%;
+    height: 100%;
+
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+}
+.lunaWeb {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/lunaBack.png) center center no-repeat,  url(../img/starSky.png);
+    background-size: 600px, cover;
+}
+
+textarea {
+    background-color: #333333;
+}
+
+.pixyImg {
+    color: black;
+    position: absolute;
+    border: 1px solid black;
+    background-color: #f4f4f4;
+}
+
+#pageHeader{
+    color: black;
+    width: 100%;
+    height: 8%;
+    background-image: linear-gradient(to left, rgba(71, 68, 68, 0), rgba(71, 68, 68, 1));
+    font-size: 250%;
+    text-align: center;
+    border-bottom: solid rgb(15, 15, 26) 1px;
+    box-shadow: 0px 0px 5px #8888888c;
+}
+#lunaHeader{
+    color: rgb(206, 206, 206);
+    width: 100%;
+    height: 35px;
+    background-color: #333333;
+    font-size: 25px;
+    text-align: center;
+    border-bottom: solid black 1px;
+    box-shadow: 0px 0px 5px #888888;
+    
+    
+}
+
+#lidarHeader{
+    color: rgb(245, 241, 241);
+    width: 85%;
+    height:25px;
+    background-color: #696969;
+    font-size: 15px;
+    text-align: left;
+    border-bottom: solid black 1px;
+    box-shadow: 0px 0px 5px #888888;
+    padding-left: 1%;
+}
+
+
+
+#map {
+    /* float: center; */
+    width: 100%;
+    height: 50%;
+    padding-top: 350px;
+    
+}
+
+#pixyView {
+    width:100%; 
+    float:center; 
+    height: 25px;
+    margin: 0px;
+    padding-top: 0.5%;
+    position: relative;
+}
+  
+  #pixyViewBox {
+    width:100%; 
+    height: 325px; 
+    /* float:center;  */
+    background: rgb(71, 68, 68);
+    margin: 0px;
+    position: relative;
+  }
+
+  #lidarDistance {
+    width: 85%;
+    height: 10%;
+
+  }
+
