@@ -1,7 +1,7 @@
 //This code Executes on the server
 const https = require('http');
 
-const IP = "http://10.0.10.10:5000/"
+const IP = "http://localhost:5000/"
 
 
 async function sendGetPrintResult(getToSend,logger) {

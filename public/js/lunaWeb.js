@@ -9,11 +9,12 @@ var Lidar = React.createClass({
   sendJson: async function (json) {
     console.log("Sent:\t" + json);
     try {
-      const response = fetch(json, { mode: 'cors' });
+      const response = fetch(json, {
+        mode: 'cors'
+      });
       console.log("Got:\t" + response);
       return response;
-    }
-    catch {
+    } catch {
       window.location.replace.href = 'popup';
     }
   },
@@ -26,31 +27,39 @@ var Lidar = React.createClass({
 
   //This gets the lidar distance from the robot
   loadLidar: async function () {
-    const getLidarInfoCmd = 6;
-    const response = await this.sendCmd(getLidarInfoCmd);
-    const myJson = await response.json(); //extract JSON from the http response
+    // const getLidarInfoCmd = 6;
+    // const response = await this.sendCmd(getLidarInfoCmd);
+    // const myJson = await response.json(); //extract JSON from the http response
 
-    const dist = myJson["L"];
+    // const dist = myJson["L"];
 
-    document.getElementById("lidarDistance").setAttribute("value", dist);
+    // document.getElementById("lidarDistance").setAttribute("value", dist);
   },
 
   render: function () {
     this.loadLidar();
-    return React.createElement("div", { id: "map" },
-      React.createElement("header", { id: "lunaHeader" }, "•~•~•~•~•~•~•~•~•~ Lidars ~•~•~•~•~•~•~•~•~•"),
-      React.createElement("p", { id: "lidarHeader" }, "•~•~ Front ~•~•"),
+    return React.createElement("div", {
+        id: "map"
+      },
+      React.createElement("header", {
+        id: "lunaHeader"
+      }, "•~•~•~•~•~•~•~•~•~ Lidars ~•~•~•~•~•~•~•~•~•"),
+      React.createElement("p", {
+        id: "lidarHeader"
+      }, "•~•~ Front ~•~•"),
       React.createElement("progress", {
         value: "0",
         max: "45",
         id: "lidarDistance"
       }, " "),
-      React.createElement("p", { id: "lidarHeader" }, "•~•~ Back ~•~•"),
+      React.createElement("p", {
+        id: "lidarHeader"
+      }, "•~•~ Back ~•~•"),
       React.createElement("progress", {
         value: "0",
         max: "45",
         id: "lidarDistance"
-      }, " "),);
+      }, " "), );
   }
 
 
@@ -58,17 +67,33 @@ var Lidar = React.createClass({
 setInterval(Lidar.loadLidar, 500);
 Lidar = React.createFactory(Lidar);
 
+
+var PixyImgBox = React.createClass({
+  render: function() {
+    return React.createElement("div",{
+      className: "pixyImg",
+      width: "100px",
+      height: "100px",
+    })
+    // return React.createElement("header", {
+    //   id: "lunaHeader"
+    // })
+  }
+
+})
+
 var Pixy = React.createClass({
 
   //This sends the json to the raspberry pi and gets a response
   sendJson: async function (json) {
     console.log("Sent:\t" + json);
     try {
-      const response = fetch(json, { mode: 'cors' });
+      const response = fetch(json, {
+        mode: 'cors'
+      });
       console.log("Got:\t" + response);
       return response;
-    }
-    catch {
+    } catch {
       window.location.href = '#popup';
     }
   },
@@ -79,19 +104,22 @@ var Pixy = React.createClass({
     return this.sendJson(ip);
   },
 
+  
   //This sets up the pixy view
   loadPixy: async function () {
 
     const getPixyInfoCmd = 5;
     const response = await this.sendCmd(getPixyInfoCmd);
-    let myJson = response.json(); //extract JSON from the http response
-    //myJson = JSON.parse('{"C": 3, "H1": 6, "H2": 4, "S2": 1, "H0": 39, "S0": 1, "X2": 291, "W2": 14, "W1": 14, "W0": 62, "Y1": 56, "Y0": 139, "X0": 283, "X1": 135, "S1": 1, "Y2": 112}');
+    // let myJson = response.json(); //extract JSON from the http response
+    let myJson = JSON.parse('{"C": 3, "H1": 6, "H2": 4, "S2": 1, "H0": 39, "S0": 1, "X2": 291, "W2": 14, "W1": 14, "W0": 62, "Y1": 56, "Y0": 139, "X0": 283, "X1": 135, "S1": 1, "Y2": 112}');
     console.log("Got Json:" + myJson);
     const count = myJson["C"];
     console.log(myJson);
 
     const pixyView = React.createElement("div", {
-      id: "pixyViewBox"});
+      id: "pixyViewBox"
+    });
+
 
     for (let i = 0; i < count; i++) {
       const width = myJson["W" + i] / 320;
@@ -100,18 +128,24 @@ var Pixy = React.createClass({
       const x = myJson["X" + i] / 320 - width / 2;
       const y = myJson["Y" + i] / 200 - height / 2;
       console.log(x);
-      const box = document.createElement("DIV");
-      box.setAttribute("class", "pixyImg");
 
-      box.setAttribute("style",
-        "width: " + width * 100 + "%;" +
-        " height: " + height * 100 + "%;" +
-        " left:" + x * 100 + "%;" +
-        " top:" + y * 100 + "%;");
 
-      box.innerHTML = myJson["S" + i];
+      const box = React.createElement("div", {
+        id: "box"
+      });
 
-      pixyView.appendChild(box);
+      // box.setAttribute("class", "pixyImg");
+
+      // box.setAttribute("style",
+      //   "width: " + width * 100 + "%;" +
+      //   " height: " + height * 100 + "%;" +
+      //   " left:" + x * 100 + "%;" +
+      //   " top:" + y * 100 + "%;");
+
+      // box.innerHTML = myJson["S" + i];
+
+
+      // React.createElement(box);
     }
   },
 
@@ -119,23 +153,37 @@ var Pixy = React.createClass({
     this.loadPixy();
     return React.createElement("div", {
       id: "pixyView"
-    }, React.createElement("header", { id: "lunaHeader" }, "•~•~•~•~•~•~•~•~•~ Pixy View ~•~•~•~•~•~•~•~•~•"), React.createElement("div", {
-      id: "pixyViewBox"})
-      );
+    }, React.createElement("header", {
+      id: "lunaHeader"
+    }, "•~•~•~•~•~•~•~•~•~ Pixy View ~•~•~•~•~•~•~•~•~•"), React.createElement("div", {
+      id: "pixyViewBox"
+    }, React.createElement(PixyImgBox)));
+
+    // return "<h1>Hello, {this.props.name}</h1>";
   }
 })
-setInterval(Pixy.loadPixy, 500);
-Pixy = React.createFactory(Pixy);
 
+
+
+Pixy = React.createElement(Pixy);
+setInterval(Pixy.loadPixy, 500);
 
 /** Main application component. */
 var LunaWeb = React.createClass({
   displayName: 'LunaWeb',
 
   render: function () {
-    return React.DOM.div(null, JQueryMobilePage({ role: 'main', className: 'lunaWeb' }, MainImage(null)),
-      JQueryMobilePage({ id: 'one' }, MainPage(null)),
-      JQueryMobilePage({id:'popup', headerTheme:'b'}, PopUp(null))
+    return React.DOM.div(null, JQueryMobilePage({
+        role: 'main',
+        className: 'lunaWeb'
+      }, MainImage(null)),
+      JQueryMobilePage({
+        id: 'one'
+      }, MainPage(null)),
+      JQueryMobilePage({
+        id: 'popup',
+        headerTheme: 'b'
+      }, PopUp(null))
     )
   },
 
@@ -148,7 +196,9 @@ var JQueryMobileButton = React.createClass({
   displayName: 'JQueryMobileButton',
 
   getDefaultProps: function () {
-    return { className: 'ui-btn ui-shadow ui-corner-all' };
+    return {
+      className: 'ui-btn ui-shadow ui-corner-all'
+    };
   },
 
   render: function () {
@@ -164,7 +214,10 @@ var JQueryMobileContent = React.createClass({
   displayName: 'JQueryMobileContent',
 
   render: function () {
-    return React.DOM.div({ role: 'main', className: 'ui-content' },
+    return React.DOM.div({
+        role: 'main',
+        className: 'ui-content'
+      },
       this.props.children
     );
   }
@@ -176,7 +229,10 @@ var JQueryMobileHeader = React.createClass({
   displayName: 'JQueryMobileHeader',
 
   render: function () {
-    return React.DOM.div({ 'data-role': 'header', 'data-theme': this.props.headerTheme },
+    return React.DOM.div({
+        'data-role': 'header',
+        'data-theme': this.props.headerTheme
+      },
       React.DOM.h1(null, this.props.title)
     );
   }
@@ -188,7 +244,11 @@ var JQueryMobilePage = React.createClass({
   displayName: 'JQueryMobilePage',
 
   getDefaultProps: function () {
-    return { 'data-role': 'page', 'data-theme': 'a', headerTheme: 'a' };
+    return {
+      'data-role': 'page',
+      'data-theme': 'a',
+      headerTheme: 'a'
+    };
   },
 
   render: function () {
@@ -218,7 +278,9 @@ var MainImage = React.createClass({
   },
 
   render: function () {
-    return React.createElement("lunaWeb", { id: "lunaWeb" }, "");
+    return React.createElement("lunaWeb", {
+      id: "lunaWeb"
+    }, "");
   }
 });
 
@@ -233,8 +295,10 @@ var MainPage = React.createClass({
   render: function () {
 
     return React.DOM.div(null,
-      React.createElement("header", { id: "pageHeader" }, "•~•~•~•~•~•~•~•~•~ Lunacats ~•~•~•~•~•~•~•~•~•"),
-      Pixy(),
+      React.createElement("header", {
+        id: "pageHeader"
+      }, "•~•~•~•~•~•~•~•~•~ Lunacats ~•~•~•~•~•~•~•~•~•"),
+      Pixy,
       Lidar()
 
     );
@@ -253,7 +317,11 @@ var PopUp = React.createClass({
       React.DOM.h2(null, 'Problem Connecting!'),
       React.DOM.p(null, 'Unable to connect to ',
         React.DOM.code(null, 'Raspberry Pi')),
-      JQueryMobileButton({ href: '#one', 'data-rel': 'back', className: 'ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left' }, 'Try again.')
+      JQueryMobileButton({
+        href: '#one',
+        'data-rel': 'back',
+        className: 'ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left'
+      }, 'Try again.')
 
     );
   }
@@ -263,4 +331,3 @@ PopUp = React.createFactory(PopUp);
 
 // Render application.
 ReactDOM.render(LunaWeb(null), document.getElementById('content'));
-
