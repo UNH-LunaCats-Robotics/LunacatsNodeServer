@@ -68,45 +68,62 @@ setInterval(Lidar.loadLidar, 500);
 Lidar = React.createFactory(Lidar);
 
 
-var PixyImgBox = React.createClass({
-  render: function() {
-    return React.createElement("div",{
-      className: "pixyImg",
-      width: "100px",
-      height: "100px",
-    })
-    // return React.createElement("header", {
-    //   id: "lunaHeader"
-    // })
+class PixyImgBox extends React.Component {
+
+
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      checked: false
+    };
+
+    this.width = 25;
+    this.height = 25;
+    this.left = 25;
+    this.top = 25;
   }
 
-})
+  render() {
+    return React.createElement("div",{
+      className: "pixyImg",
+      style: {
+        width: this.width + "%",
+        height: this.height + "%",
+        left: this.left  + "%",
+        top: this.top + "%"
+      }
+    })
+  }
 
-var Pixy = React.createClass({
+}
+
+class Pixy extends React.Component {
 
   //This sends the json to the raspberry pi and gets a response
-  sendJson: async function (json) {
+  async sendJson(json) {
     console.log("Sent:\t" + json);
     try {
       const response = fetch(json, {
         mode: 'cors'
       });
+      
       console.log("Got:\t" + response);
       return response;
     } catch {
       window.location.href = '#popup';
     }
-  },
+  }
 
   //This sends a json string with just a cmd specified to the robot
-  sendCmd: function (cmd) {
+  sendCmd (cmd) {
     const ip = "http://localhost:3000/getPixyData";
     return this.sendJson(ip);
-  },
+  }
 
   
   //This sets up the pixy view
-  loadPixy: async function () {
+  async loadPixy() {
 
     const getPixyInfoCmd = 5;
     const response = await this.sendCmd(getPixyInfoCmd);
@@ -147,9 +164,9 @@ var Pixy = React.createClass({
 
       // React.createElement(box);
     }
-  },
+  }
 
-  render: function () {
+  render() {
     this.loadPixy();
     return React.createElement("div", {
       id: "pixyView"
@@ -161,7 +178,7 @@ var Pixy = React.createClass({
 
     // return "<h1>Hello, {this.props.name}</h1>";
   }
-})
+}
 
 
 
