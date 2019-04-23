@@ -39,8 +39,8 @@ var Lidar = React.createClass({
   render: function () {
     this.loadLidar();
     return React.createElement("div", {
-        id: "map"
-      },
+      id: "map"
+    },
       React.createElement("header", {
         id: "lunaHeader"
       }, "•~•~•~•~•~•~•~•~•~ Lidars ~•~•~•~•~•~•~•~•~•"),
@@ -59,13 +59,11 @@ var Lidar = React.createClass({
         value: "0",
         max: "45",
         id: "lidarDistance"
-      }, " "), );
+      }, " "));
   }
 
 
 })
-
-
 setInterval(Lidar.loadLidar, 500);
 Lidar = React.createFactory(Lidar);
 
@@ -79,26 +77,75 @@ class PixyImgBox extends React.Component {
     this.state = {
       checked: false
     };
+    this.count = 0;
+    this.data = [];
+    this.width = 0;
+    this.height = 0;
+    this.left = 0;
+    this.top = 0;
+    this.seq = -4;
+  }
 
-    this.width = 25;
-    this.height = 25;
-    this.left = 25;
-    this.top = 25;
+  //This sends the json to the raspberry pi and gets a response
+  async sendJson(json) {
+    console.log("Sent:\t" + json);
+    try {
+      const response = fetch(json, {
+        mode: 'cors'
+      });
+
+      console.log("Got:\t" + response);
+      return response;
+    } catch {
+      window.location.href = '#popup';
+    }
+  }
+
+  //This sends a json string with just a cmd specified to the robot
+  sendCmd(cmd) {
+    const ip = "http://localhost:3000/getPixyData";
+    return this.sendJson(ip);
+  }
+
+  pixyBoxInfo() {
+    const getPixyInfoCmd = 5;
+    const response = this.sendCmd(getPixyInfoCmd);
+    // let myJson = response.json(); //extract JSON from the http response
+    let myJson = JSON.parse('{"C": 3, "H1": 6, "H2": 4, "S2": 1, "H0": 39, "S0": 1, "X2": 291, "W2": 14, "W1": 14, "W0": 62, "Y1": 56, "Y0": 139, "X0": 283, "X1": 135, "S1": 1, "Y2": 112}');
+    //let myJson = JSON.parse('{"C": 1, "H0": 39, "S0": 1, "W0": 62, "Y0": 139, "X0": 283}');
+
+    console.log("Got Json:" + myJson);
+    this.count = myJson["C"];
+    console.log(this.count);
+    for (let i = 0; i < this.count; i++) {
+      console.log("IN " + i);
+      this.width = myJson["W" + i] / 320;
+      this.height = myJson["H" + i] / 200;
+      this.left = myJson["X" + i] / 320 - this.width / 2;
+      this.top = myJson["Y" + i] / 200 - this.height / 2;
+      this.data = [this.width, this.height, this.left, this.top];
+      this.boxes[i] = data;
+    }
   }
 
   render() {
-    return React.createElement("div",{
-      className: "pixyImg",
+    this.pixyBoxInfo()
+    console.log("rr");
+    for(i = 0; i < this.count; i++) {
+      return React.createElement('div', {id: 'pixyImg', 
       style: {
-        width: this.width + "%",
-        height: this.height + "%",
-        left: this.left  + "%",
-        top: this.top + "%"
-      }
-    })
+        width: this.boxes[i][0]*100 +'%',
+        height: this.boxes[i][1]*100 +'%',
+        left: this.boxes[i][2]*100 +'%',
+        top: this.boxes[i][3]*100 +'%',
+      }})
+    }
+
+    // return "<h1>Hello, {this.props.name}</h1>";
   }
 
 }
+// PixyImgBox = React.createElement(PixyImgBox);
 
 class Pixy extends React.Component {
 
@@ -109,7 +156,7 @@ class Pixy extends React.Component {
       const response = fetch(json, {
         mode: 'cors'
       });
-      
+
       console.log("Got:\t" + response);
       return response;
     } catch {
@@ -118,58 +165,58 @@ class Pixy extends React.Component {
   }
 
   //This sends a json string with just a cmd specified to the robot
-  sendCmd (cmd) {
+  sendCmd(cmd) {
     const ip = "http://localhost:3000/getPixyData";
     return this.sendJson(ip);
   }
 
-  
+
   //This sets up the pixy view
   async loadPixy() {
 
-    const getPixyInfoCmd = 5;
-    const response = await this.sendCmd(getPixyInfoCmd);
-    // let myJson = response.json(); //extract JSON from the http response
-    let myJson = JSON.parse('{"C": 3, "H1": 6, "H2": 4, "S2": 1, "H0": 39, "S0": 1, "X2": 291, "W2": 14, "W1": 14, "W0": 62, "Y1": 56, "Y0": 139, "X0": 283, "X1": 135, "S1": 1, "Y2": 112}');
-    console.log("Got Json:" + myJson);
-    const count = myJson["C"];
-    console.log(myJson);
+    // const getPixyInfoCmd = 5;
+    // const response = await this.sendCmd(getPixyInfoCmd);
+    // // let myJson = response.json(); //extract JSON from the http response
+    // let myJson = JSON.parse('{"C": 3, "H1": 6, "H2": 4, "S2": 1, "H0": 39, "S0": 1, "X2": 291, "W2": 14, "W1": 14, "W0": 62, "Y1": 56, "Y0": 139, "X0": 283, "X1": 135, "S1": 1, "Y2": 112}');
+    // console.log("Got Json:" + myJson);
+    // const count = myJson["C"];
+    // console.log(myJson);
 
-    const pixyView = React.createElement("div", {
-      id: "pixyViewBox"
-    });
-
-
-    for (let i = 0; i < count; i++) {
-      const width = myJson["W" + i] / 320;
-      const height = myJson["H" + i] / 200;
-
-      const x = myJson["X" + i] / 320 - width / 2;
-      const y = myJson["Y" + i] / 200 - height / 2;
-      console.log(x);
+    // const pixyView = React.createElement("div", {
+    //   id: "pixyViewBox"
+    // });
 
 
-      const box = React.createElement("div", {
-        id: "box"
-      });
+    // for (let i = 0; i < count; i++) {
+    //   const width = myJson["W" + i] / 320;
+    //   const height = myJson["H" + i] / 200;
 
-      // box.setAttribute("class", "pixyImg");
-
-      // box.setAttribute("style",
-      //   "width: " + width * 100 + "%;" +
-      //   " height: " + height * 100 + "%;" +
-      //   " left:" + x * 100 + "%;" +
-      //   " top:" + y * 100 + "%;");
-
-      // box.innerHTML = myJson["S" + i];
+    //   const x = myJson["X" + i] / 320 - width / 2;
+    //   const y = myJson["Y" + i] / 200 - height / 2;
+    //   console.log(x);
 
 
-      // React.createElement(box);
-    }
+    //   const box = React.createElement("div", {
+    //     id: "box"
+    //   });
+
+    // box.setAttribute("class", "pixyImg");
+
+    // box.setAttribute("style",
+    //   "width: " + width * 100 + "%;" +
+    //   " height: " + height * 100 + "%;" +
+    //   " left:" + x * 100 + "%;" +
+    //   " top:" + y * 100 + "%;");
+
+    // box.innerHTML = myJson["S" + i];
+
+
+    // React.createElement(box);
   }
 
+
   render() {
-    this.loadPixy();
+    //this.loadPixy();
     return React.createElement("div", {
       id: "pixyView"
     }, React.createElement("header", {
@@ -184,8 +231,8 @@ class Pixy extends React.Component {
 
 
 
-Pixy = React.createElement(Pixy);
-setInterval(Pixy.loadPixy, 500);
+// Pixy = React.createElement(Pixy);
+// setInterval(Pixy.loadPixy, 500);
 
 /** Main application component. */
 var LunaWeb = React.createClass({
@@ -193,15 +240,15 @@ var LunaWeb = React.createClass({
 
   render: function () {
     return React.DOM.div(null, JQueryMobilePage({
-        role: 'main',
-        className: 'lunaWeb'
-      }, MainImage(null)),
+      role: 'main',
+      className: 'lunaWeb'
+    }, MainImage(null)),
       JQueryMobilePage({
         id: 'one'
       }, MainPage(null)),
       JQueryMobilePage({
         id: 'popup',
-        headerTheme: 'b'
+        headerTheme: 'b', 'data-rel': 'dialog'
       }, PopUp(null))
     )
   },
@@ -234,9 +281,9 @@ var JQueryMobileContent = React.createClass({
 
   render: function () {
     return React.DOM.div({
-        role: 'main',
-        className: 'ui-content'
-      },
+      role: 'main',
+      className: 'ui-content'
+    },
       this.props.children
     );
   }
@@ -249,9 +296,9 @@ var JQueryMobileHeader = React.createClass({
 
   render: function () {
     return React.DOM.div({
-        'data-role': 'header',
-        'data-theme': this.props.headerTheme
-      },
+      'data-role': 'header',
+      'data-theme': this.props.headerTheme
+    },
       React.DOM.h1(null, this.props.title)
     );
   }
@@ -333,13 +380,15 @@ var PopUp = React.createClass({
 
   render: function () {
     return React.DOM.div(null,
-      React.DOM.h2(null, 'Problem Connecting!'),
-      React.DOM.p(null, 'Unable to connect to ',
-        React.DOM.code(null, 'Raspberry Pi')),
+      React.createElement("div", { id: 'popup' },
+        React.createElement("div", { id: 'popup_inner' },
+        React.createElement("div", { id: 'popup_Font' }, 'Problem Connecting! \n'),
+        React.createElement("div", { id: 'popup_Inner_Font' }, 'Unable to connect to ',
+            React.DOM.code(null, 'Raspberry Pi')))),
       JQueryMobileButton({
         href: '#one',
         'data-rel': 'back',
-        className: 'ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left'
+        className: 'ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-left'
       }, 'Try again.')
 
     );
