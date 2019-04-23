@@ -64,6 +64,8 @@ var Lidar = React.createClass({
 
 
 })
+
+
 setInterval(Lidar.loadLidar, 500);
 Lidar = React.createFactory(Lidar);
 
