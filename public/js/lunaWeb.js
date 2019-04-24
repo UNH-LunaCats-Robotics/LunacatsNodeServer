@@ -79,11 +79,13 @@ class PixyImgBox extends React.Component {
     };
     this.count = 0;
     this.data = [];
+    this.boxes = [];
     this.width = 0;
     this.height = 0;
     this.left = 0;
     this.top = 0;
     this.seq = -4;
+    this.whiteBox = [];
   }
 
   //This sends the json to the raspberry pi and gets a response
@@ -124,30 +126,46 @@ class PixyImgBox extends React.Component {
       this.left = myJson["X" + i] / 320 - this.width / 2;
       this.top = myJson["Y" + i] / 200 - this.height / 2;
       this.data = [this.width, this.height, this.left, this.top];
-      this.boxes[i] = data;
+      this.boxes[i] = this.data;
     }
   }
 
-  render() {
+  boxArray() {
     this.pixyBoxInfo()
-    console.log("rr");
-    for(i = 0; i < this.count; i++) {
-      return React.createElement('div', {id: 'pixyImg', 
-      style: {
-        width: this.boxes[i][0]*100 +'%',
-        height: this.boxes[i][1]*100 +'%',
-        left: this.boxes[i][2]*100 +'%',
-        top: this.boxes[i][3]*100 +'%',
-      }})
+    for (var i = 0; i < this.boxes.length; i++) {
+      this.whiteBox[i] = React.createElement('div', {
+        id: 'pixyImg',
+        style: {
+          width: this.boxes[i][0] * 100 + '%',
+          height: this.boxes[i][1] * 100 + '%',
+          left: this.boxes[i][2] * 100 + '%',
+          top: this.boxes[i][3] * 100 + '%',
+        }
+      })
     }
+    console.log("WWW" + this.whiteBox.length);
+  }
+
+  render() {
+    this.pixyBoxInfo();
+    console.log("rr");
+    return React.createElement("div", {
+      id: "pixyViewBox"
+    }, this.boxes.map((box, i) => {return React.createElement('div', { id: 'pixyImg', style: {
+      width: box[0] * 100 + '%',
+      height: box[1] * 100 + '%',
+      left: box[2] * 100 + '%',
+      top: box[3] * 100 + '%',
+    }})}))
+
 
     // return "<h1>Hello, {this.props.name}</h1>";
   }
 
 }
-// PixyImgBox = React.createElement(PixyImgBox);
+//PixyImgBox = React.createElement(PixyImgBox);
 
-class Pixy extends React.Component {
+var Pixy = React.createClass({
 
   //This sends the json to the raspberry pi and gets a response
   async sendJson(json) {
@@ -162,61 +180,16 @@ class Pixy extends React.Component {
     } catch {
       window.location.href = '#popup';
     }
-  }
+  },
 
   //This sends a json string with just a cmd specified to the robot
   sendCmd(cmd) {
     const ip = "http://localhost:3000/getPixyData";
     return this.sendJson(ip);
-  }
-
-
-  //This sets up the pixy view
-  async loadPixy() {
-
-    // const getPixyInfoCmd = 5;
-    // const response = await this.sendCmd(getPixyInfoCmd);
-    // // let myJson = response.json(); //extract JSON from the http response
-    // let myJson = JSON.parse('{"C": 3, "H1": 6, "H2": 4, "S2": 1, "H0": 39, "S0": 1, "X2": 291, "W2": 14, "W1": 14, "W0": 62, "Y1": 56, "Y0": 139, "X0": 283, "X1": 135, "S1": 1, "Y2": 112}');
-    // console.log("Got Json:" + myJson);
-    // const count = myJson["C"];
-    // console.log(myJson);
-
-    // const pixyView = React.createElement("div", {
-    //   id: "pixyViewBox"
-    // });
-
-
-    // for (let i = 0; i < count; i++) {
-    //   const width = myJson["W" + i] / 320;
-    //   const height = myJson["H" + i] / 200;
-
-    //   const x = myJson["X" + i] / 320 - width / 2;
-    //   const y = myJson["Y" + i] / 200 - height / 2;
-    //   console.log(x);
-
-
-    //   const box = React.createElement("div", {
-    //     id: "box"
-    //   });
-
-    // box.setAttribute("class", "pixyImg");
-
-    // box.setAttribute("style",
-    //   "width: " + width * 100 + "%;" +
-    //   " height: " + height * 100 + "%;" +
-    //   " left:" + x * 100 + "%;" +
-    //   " top:" + y * 100 + "%;");
-
-    // box.innerHTML = myJson["S" + i];
-
-
-    // React.createElement(box);
-  }
-
+  },
 
   render() {
-    //this.loadPixy();
+    console.log("ppp");
     return React.createElement("div", {
       id: "pixyView"
     }, React.createElement("header", {
@@ -224,11 +197,9 @@ class Pixy extends React.Component {
     }, "•~•~•~•~•~•~•~•~•~ Pixy View ~•~•~•~•~•~•~•~•~•"), React.createElement("div", {
       id: "pixyViewBox"
     }, React.createElement(PixyImgBox)));
-
-    // return "<h1>Hello, {this.props.name}</h1>";
   }
-}
-
+})
+Pixy = React.createFactory(Pixy);
 
 
 // Pixy = React.createElement(Pixy);
@@ -364,7 +335,7 @@ var MainPage = React.createClass({
       React.createElement("header", {
         id: "pageHeader"
       }, "•~•~•~•~•~•~•~•~•~ Lunacats ~•~•~•~•~•~•~•~•~•"),
-      Pixy,
+      Pixy(),
       Lidar()
 
     );
@@ -382,8 +353,8 @@ var PopUp = React.createClass({
     return React.DOM.div(null,
       React.createElement("div", { id: 'popup' },
         React.createElement("div", { id: 'popup_inner' },
-        React.createElement("div", { id: 'popup_Font' }, 'Problem Connecting! \n'),
-        React.createElement("div", { id: 'popup_Inner_Font' }, 'Unable to connect to ',
+          React.createElement("div", { id: 'popup_Font' }, 'Problem Connecting! \n'),
+          React.createElement("div", { id: 'popup_Inner_Font' }, 'Unable to connect to ',
             React.DOM.code(null, 'Raspberry Pi')))),
       JQueryMobileButton({
         href: '#one',

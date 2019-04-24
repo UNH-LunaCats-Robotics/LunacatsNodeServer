@@ -17,7 +17,7 @@ textarea {
     background-color: #333333;
 }
 
-.pixyImg {
+#pixyImg {
     color: black;
     position: absolute;
     border: 1px solid black;
