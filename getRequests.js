@@ -1,7 +1,7 @@
 //This code Executes on the server
 const https = require('http');
 
-const IP = "http://localhost:5000/"
+const IP = "http://10.0.10.10:5000/"
 
 
 async function sendGetPrintResult(getToSend,logger) {
@@ -46,14 +46,16 @@ class ResponseGeneratorForGetterAndSetter {
 
     app.get('/' + getPath + '/', function (req, res) {
       logger.log("sending info");
-      res.send(data)
+      res.setHeader('Access-Control-Allow-Origin', '*')
+      response.setHeader('Content-Type', 'application/json')
+      res.send(JSON.parse(data))
     })
   }
 
 }
 
 function createRouting(app, logger) {
-  new ResponseGeneratorForGetterAndSetter(app, 'setPixyData', 'getPixyData', "{'c':0}", logger)
+  new ResponseGeneratorForGetterAndSetter(app, 'setPixyData', 'getPixyData', "{\"C\":0}", logger)
   new ResponseGeneratorForGetterAndSetter(app, 'setLidarData', 'getLidarData', "0", logger)
 }
 
