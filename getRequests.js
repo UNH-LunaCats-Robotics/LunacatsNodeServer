@@ -47,7 +47,7 @@ class ResponseGeneratorForGetterAndSetter {
     app.get('/' + getPath + '/', function (req, res) {
       logger.log("sending info");
       res.setHeader('Access-Control-Allow-Origin', '*')
-      response.setHeader('Content-Type', 'application/json')
+      res.setHeader('Content-Type', 'application/json')
       res.send(JSON.parse(data))
     })
   }
@@ -56,7 +56,7 @@ class ResponseGeneratorForGetterAndSetter {
 
 function createRouting(app, logger) {
   new ResponseGeneratorForGetterAndSetter(app, 'setPixyData', 'getPixyData', "{\"C\":0}", logger)
-  new ResponseGeneratorForGetterAndSetter(app, 'setLidarData', 'getLidarData', "0", logger)
+  new ResponseGeneratorForGetterAndSetter(app, 'setLidarData', 'getLidarData', "{\"FL\":1,\"FR\":2,\"BL\":3,\"BR\":4}", logger)
 }
 
 

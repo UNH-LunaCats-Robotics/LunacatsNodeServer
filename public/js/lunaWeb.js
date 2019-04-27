@@ -367,6 +367,3 @@ MainPage = React.createFactory(MainPage);
 // });
 // PopUp = React.createFactory(PopUp);
 
-
-// Render application.
-ReactDOM.render(LunaWeb(null), document.getElementById('content'));
