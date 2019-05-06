@@ -3184,7 +3184,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 2:
 /*!**************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5Ccryst%5CDesktop%5CLuncatsNode%5CLunacatsNodeServer%5Cpublic%5Cpages%5Cindex.js ***!
   \**************************************************************************************************************************************************************/
@@ -3207,5 +3207,5 @@ module.exports = dll_6dc2816e14fab51b8269;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

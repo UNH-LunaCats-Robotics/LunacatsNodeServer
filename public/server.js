@@ -21,33 +21,16 @@ app
   .then(() => {
     const server = express()
 
-    
-    
+    /**************
+     * starting up sending get requests and routing
+    //  */
+    getRequests.createGetRequests(logger)
+    getRequests.createRouting(server, logger)
 
-// server.get('/', function (req, res) {
-//   logger.log("Someone Connected!")
-//   // res.render('index');
-// })
-
-// server.post('/', function (req, res) {
-//   logger.log("Someone Connected!")
-//   // res.render('index')
-// })
-server.get('*', (req, res) => {
-  console.log("page")
-  return handle(req, res)
-})
-
-
-
-/**************
- * starting up sending get requests and routing
-//  */
-// getRequests.createGetRequests(logger)
-// getRequests.createRouting(server, logger)
-// server.listen(3000, "0.0.0.0", function () {
-//   console.log('Example app listening on port 3000!')
-// })
+    server.get('*', (req, res) => {
+      console.log("page")
+      return handle(req, res)
+    })
 
     server.listen(3000, err => {
       if (err) throw err
@@ -55,8 +38,6 @@ server.get('*', (req, res) => {
     })
 
 
-
-    
   })
   .catch(ex => {
     console.error(ex.stack)
