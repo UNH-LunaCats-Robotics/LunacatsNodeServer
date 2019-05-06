@@ -19,7 +19,7 @@ export default class Pixy extends React.Component {
     }
 
     componentDidMount() {
-      this.interval = setInterval(() => this.render(), 750);
+      this.interval = setInterval(() => this.render(), 1250);
     }
 
     componentWillUnmount() {
@@ -31,6 +31,7 @@ export default class Pixy extends React.Component {
       const ip = "http://localhost:3000/getPixyData";
       return  fetch(ip).then((resp) => resp.json()).then(function(data) {
         return data;
+        
       })
   
     }
@@ -42,10 +43,10 @@ export default class Pixy extends React.Component {
       //let myJson = JSON.parse('{"C": 1, "H0": 39, "S0": 1, "W0": 62, "Y0": 139, "X0": 283}');
       //myJson = JSON.stringify(myJson);
       
-      
-      
       this.count = myJson["C"];
       console.log(this.count);
+      this.boxes = [];
+      
       for (let i = 0; i < this.count; i++) {
         this.width = myJson["W" + i] / 320;
         this.height = myJson["H" + i] / 200;
@@ -55,6 +56,8 @@ export default class Pixy extends React.Component {
         console.log("Creating box")
         this.boxes[i] = this.data;
       }
+      this.setState(this.boxes)
+
       console.log(this.boxes);
     }
   
