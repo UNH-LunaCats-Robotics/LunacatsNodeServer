@@ -1,0 +1,16 @@
+@import '../../App.scss';
+
+
+.Card {
+    border: 1px double $darkHighlightColor;
+    padding: 1px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px black;
+}
+
+.CardInner {
+
+    border-radius: 5px;
+    border: 1px double $highlightColor;
+    padding: 5px;
+}

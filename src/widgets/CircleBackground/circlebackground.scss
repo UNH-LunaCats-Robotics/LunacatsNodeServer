@@ -1,0 +1,30 @@
+@import '../../App.scss';
+
+
+.CircleBackground {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+
+    background-image: linear-gradient(to top right, $background, #0e1011);
+    z-index: -2;
+    
+    overflow: hidden;
+
+}
+
+.Circle {
+
+    width: 100px;
+    height: 100px;
+
+    position: fixed;
+    border-radius: 50px;
+    background-color: #333d53;
+
+
+    opacity: 0.1;
+    z-index: -1;
+}
