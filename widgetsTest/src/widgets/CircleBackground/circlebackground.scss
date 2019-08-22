@@ -8,7 +8,7 @@
     top: 0px;
     bottom: 0px;
 
-    background-image: linear-gradient(to top right, $background, #0e1011);
+    background-image: linear-gradient(to top right, $background, $darkBackground);
     z-index: -2;
     
     overflow: hidden;

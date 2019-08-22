@@ -1,4 +1,6 @@
 import React from 'react'
+
+import '../generic.scss'
 import './compass.scss';
 
 import {MdNavigation} from "react-icons/md"

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import '../generic.scss'
 import './circlebackground.scss'
 
 
