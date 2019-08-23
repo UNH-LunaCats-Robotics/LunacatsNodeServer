@@ -46,7 +46,7 @@ class CircleBackground extends React.Component {
         this.update = this.update.bind(this)
     }
 
-    update() {
+    async update() {
         
 
         for(var i = 0; i < this.randomPairs.length; i++) {
