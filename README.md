@@ -7,7 +7,7 @@ folder Build_Instructions.
 
 ## Project Properties
 
-- **LANGUAGES:** Node, React   
+- **LANGUAGES:** Javascript, Node, React   
 - **BUILDING:** Npm    
 
 ## Other Current Repositories
