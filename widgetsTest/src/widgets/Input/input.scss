@@ -1,0 +1,28 @@
+
+@import '../../App.scss';
+
+.Button {
+    background-color: $lightBackground;
+    padding: 5px;
+    padding-bottom: 1px;
+    height: 35px;
+    cursor: default;
+    transition: background-color 0.2s;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.Button:hover {
+    background-color: #293d4b;
+}
+
+.Button:active {
+    background-color: $darkBackground;
+}
+
+
+.ExpandingCircle {
+    border-radius: 50%;
+    border: 5px solid black;
+    position: fixed;
+}

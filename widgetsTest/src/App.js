@@ -9,6 +9,7 @@ import Sidebar from './widgets/Sidebar/Sidebar'
 // eslint-disable-next-line 
 import { ColumnContainer, ColumnContainerExtended, RowContainer, RowContainerExtended } from './widgets/FlexShorthand/FlexShorthand'
 
+import {Button} from './widgets/Input/Button'
 
 class App extends React.Component {
 
@@ -24,6 +25,8 @@ class App extends React.Component {
             <TransparentCard>
               <Compass angle={45}/>
             </TransparentCard>
+            <Button text="Test Button"/>
+
           </ColumnContainerExtended>
         </RowContainerExtended>
 
