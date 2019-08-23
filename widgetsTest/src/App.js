@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 
 import CircleBackground from './widgets/CircleBackground/CircleBackground'
-import Card from './widgets/Card/Card'
+import {TransparentCard} from './widgets/Card/Card'
 
 import Compass from './widgets/Compass/Compass'
 import Sidebar from './widgets/Sidebar/Sidebar'
@@ -21,9 +21,9 @@ class App extends React.Component {
           <Sidebar/>
 
           <ColumnContainerExtended >
-            <Card>
+            <TransparentCard>
               <Compass angle={45}/>
-            </Card>
+            </TransparentCard>
           </ColumnContainerExtended>
         </RowContainerExtended>
 

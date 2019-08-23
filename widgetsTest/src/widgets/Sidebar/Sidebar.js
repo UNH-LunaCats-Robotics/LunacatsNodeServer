@@ -5,7 +5,7 @@ import './sidebar.scss'
 
 import React from 'react'
 
-import Card from '../Card/Card'
+import {Card} from '../Card/Card'
 // eslint-disable-next-line 
 import { ColumnContainer, ColumnContainerExtended, RowContainer, RowContainerExtended } from '../FlexShorthand/FlexShorthand'
 

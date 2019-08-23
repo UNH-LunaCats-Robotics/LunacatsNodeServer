@@ -3,29 +3,13 @@ import React from 'react'
 
 import '../generic.scss'
 import './flexShorthand.scss'
-
+import {jsonConcat} from '../Utilities'
 
 const ColumnContainerStyle = { flexDirection:"column"}
 const ColumnContainerExtendedStyle = { margin:0, padding:0, flexDirection:"column", width:"100%", height:"100%"}
 const RowContainerExtendedStyle = { margin:0, padding:0, width:"100%", height:"100%"}
 
-function jsonConcat(jsonA, jsonB) {
-    if(jsonB == null)
-        return jsonA;
-    if(jsonA == null)
-        return jsonB;
-    
-    var retVal = {}
-    
-    for(var key in jsonA) {
-        retVal[key] = jsonA[key]
-    }
-    for(var key2 in jsonB) {
-        retVal[key2] = jsonB[key2]
-    }
 
-    return retVal;
-}
 
 class ColumnContainer extends React.Component {
     render() {
