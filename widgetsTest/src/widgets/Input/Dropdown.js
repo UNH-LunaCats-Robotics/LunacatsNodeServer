@@ -25,14 +25,17 @@ export class Dropdown extends React.Component {
     }
     setOption(option) {
         this.setState({showList:false,selectedOption:option});
+        if(this.props.onChange != null) {
+            this.props.onChange(option)
+        }
     }
 
     render() {
         if (this.state.showList) {
             return (
-                <div className="DropdownHolder">
+                <div className="DropdownHolder" style={this.props.style}>
                     <div className="Dropdown" onClick={e => { this.setState({ showList: false }) }} > {this.state.selectedOption} {arrowIcon} </div>
-                        <div className="List">
+                        <div key={this.makeOptionItem} className="List">
                             {this.props.options.map(this.makeOptionItem)}
                         </div>
 
@@ -42,7 +45,7 @@ export class Dropdown extends React.Component {
         }
         else {
             return (
-                <div className="DropdownHolder">
+                <div className="DropdownHolder" style={this.props.style}>
                     <div className="Dropdown" onClick={e => { this.setState({ showList: true }) }}> {this.state.selectedOption} {arrowIcon} </div>
                 </div>
             )

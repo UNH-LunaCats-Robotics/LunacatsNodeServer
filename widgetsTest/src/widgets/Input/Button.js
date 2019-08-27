@@ -40,6 +40,10 @@ class Button extends React.Component {
         })
         this.interval = setInterval(this.expandCircle, 1);
 
+        if(this.props.onClick != null) { 
+            this.props.onClick()
+        }
+
     }
 
     async expandCircle() {

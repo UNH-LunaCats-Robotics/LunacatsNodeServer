@@ -9,7 +9,7 @@ export class InputText extends React.Component {
     render () {
         return (
             <TransparentCard style={this.props.style}>
-                <input type="text" className="InputText" placeholder={this.props.placeholder}/>
+                <input onChange={this.props.onChange} type="text" className="InputText" placeholder={this.props.placeholder}/>
             </TransparentCard>
             
         )
