@@ -1,11 +1,15 @@
 
-$lightBackground: #31363f;
-$background: #282c34;
-$darkBackground: #09090b;
+$lightBackground: #fefefe;
+$background: #4bdfe4;
+$darkBackground: #6fb77c;
 
 $highlight: #61dafb;
 $darkHighlight: #3ba1bb;
 
+
+$darkComponentColor: #333333;
+$lightTextColor: #fefefe;
+$textColor: #333333;
 
 #root {
   width: 100%;
@@ -15,7 +19,7 @@ $darkHighlight: #3ba1bb;
 
   text-align: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: $textColor;
 }
 
 .App {

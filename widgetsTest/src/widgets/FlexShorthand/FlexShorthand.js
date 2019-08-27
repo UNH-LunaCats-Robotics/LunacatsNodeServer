@@ -6,8 +6,8 @@ import './flexShorthand.scss'
 import {jsonConcat} from '../Utilities'
 
 const ColumnContainerStyle = { flexDirection:"column"}
-const ColumnContainerExtendedStyle = { margin:0, padding:0, flexDirection:"column", width:"100%", height:"100%"}
-const RowContainerExtendedStyle = { margin:0, padding:0, width:"100%", height:"100%"}
+const ColumnContainerExtendedStyle = { margin:0, padding:0, flexDirection:"column", height:"100%", flexGrow:1}
+const RowContainerExtendedStyle = { margin:0, padding:0, height:"100%", width:"100%"}
 
 
 

@@ -13,11 +13,12 @@
 }
 
 .Button:hover {
-    background-color: #293d4b;
+    color: $lightTextColor;
+    background-color: $darkComponentColor;
 }
 
 .Button:active {
-    background-color: $darkBackground;
+    background-color: $lightBackground;
 }
 
 

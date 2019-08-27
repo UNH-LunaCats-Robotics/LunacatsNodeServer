@@ -2,10 +2,6 @@ import React from 'react'
 import '../generic.scss'
 import './input.scss'
 
-import { findDOMNode } from 'react-dom';
-import $ from 'jquery';
-
-
 class Button extends React.Component {
 
 
@@ -89,7 +85,7 @@ class Button extends React.Component {
         return (
             <div id={1} className="Button" style={this.props.style} onClick={this.createExpandingCircle}>
                 {this.state.clickedCircle.div}
-                {this.props.text}
+                {this.props.children}
             </div>
         )
     }
