@@ -83,7 +83,7 @@ class Button extends React.Component {
 
     render() {
         return (
-            <div id={1} className="Button" style={this.props.style} onClick={this.createExpandingCircle}>
+            <div id={1} className="Button Container" style={this.props.style} onClick={this.createExpandingCircle}>
                 {this.state.clickedCircle.div}
                 {this.props.children}
             </div>

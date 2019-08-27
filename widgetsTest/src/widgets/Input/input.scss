@@ -1,23 +1,23 @@
 
 @import '../../App.scss';
 
-.Button {
+.Input {
     background-color: $lightBackground;
-    padding: 5px;
-    padding-bottom: 1px;
-    height: 35px;
     cursor: default;
     transition: background-color 0.2s;
     overflow: hidden;
-    border-radius: 5px;
 }
 
-.Button:hover {
+.Button {
+    @extend .Input;
+    padding: 5px;
+    border-radius: 5px;
+}
+.Input:hover {
     color: $lightTextColor;
     background-color: $darkComponentColor;
 }
-
-.Button:active {
+.Input:active {
     background-color: $lightBackground;
 }
 
@@ -26,4 +26,47 @@
     border-radius: 50%;
     border: 5px solid black;
     position: fixed;
+}
+
+.Dropdown {
+    @extend .Input;
+    width: 100%;
+    height: 100%;
+}
+/* Standard syntax */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.List {
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+    background-color: $dimComponentColor;
+    z-index: 10;
+    position: relative;
+}
+.ListItem {
+    background-color: $dimComponentColor;
+    transition: background-color 0.2s;
+}
+.ListItem:Hover {
+
+    color: $lightTextColor;
+    background-color: $darkComponentColor;
+}
+
+.InputText {
+    
+    border: 0px;
+    font-size: calc(10px + 2vmin);
+    background-color: transparent;
+
+    width:100%;
+
+}
+
+.DropdownHolder {
+    height: 45px;
+    width: 15vmin;
 }
