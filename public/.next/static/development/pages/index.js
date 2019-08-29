@@ -2117,10 +2117,10 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Ftomassandstrom%2FDocuments%2FLunacatsNodeServer%2Fpublic%2Fpages%2Findex.js!./":
-/*!***************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Ftomassandstrom%2FDocuments%2FLunacatsNodeServer%2Fpublic%2Fpages%2Findex.js ***!
-  \***************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Ftomassandstrom%2FDesktop%2FLunacats%2FWebsite%2FLunacatsNodeServer%2Fpublic%2Fpages%2Findex.js!./":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Ftomassandstrom%2FDesktop%2FLunacats%2FWebsite%2FLunacatsNodeServer%2Fpublic%2Fpages%2Findex.js ***!
+  \**********************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3166,7 +3166,7 @@ function (_React$Component) {
         className: "jsx-350635141"
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_7___default.a, {
         id: "350635141"
-      }, "html.jsx-350635141{margin:0;width:100%;height:100%;overflow-y:hidden;background:url(../static/lunaBack.png)center center no-repeat,url(../static/starSky.png);background-size:450px,cover;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy90b21hc3NhbmRzdHJvbS9Eb2N1bWVudHMvTHVuYWNhdHNOb2RlU2VydmVyL3B1YmxpYy9wYWdlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFlNEIsQUFHa0MsU0FDRSxXQUNDLFlBQ00sa0JBQ3lFLHlGQUM5RCw0QkFDckMiLCJmaWxlIjoiL1VzZXJzL3RvbWFzc2FuZHN0cm9tL0RvY3VtZW50cy9MdW5hY2F0c05vZGVTZXJ2ZXIvcHVibGljL3BhZ2VzL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy9CZWdpbnMgYnkgc2hvd2luZyBMdW5hY2F0cyBpbWFnZSBmb3IgMS41IHNlY29uZHMsIEkgaG9wZSBhdCBsZWFzdCAjcHJheWluZ1xuLyoqIEx1bmEgSW1hZ2UgY29tcG9uZW50LiAqL1xuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuZXhwb3J0IGRlZmF1bHQgY2xhc3MgTWFpbkltYWdlIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgICBjb21wb25lbnREaWRNb3VudCA9ICgpID0+IHtcbiAgICAgICAgdGhpcy50aW1lb3V0SGFuZGxlID0gc2V0VGltZW91dCgoKSA9PiB7XG4gICAgICAgICAgICB3aW5kb3cubG9jYXRpb24uaHJlZiA9ICcvTWFpblBhZ2UnO1xuICAgICAgICB9LCAxNTAwKTtcbiAgICB9O1xuICAgIGNvbXBvbmVudFdpbGxVbm1vdW50ID0gKCkgPT4ge1xuICAgICAgICBjbGVhclRpbWVvdXQodGhpcy50aW1lb3V0SGFuZGxlKTtcbiAgICB9XG4gICAgcmVuZGVyKCkge1xuICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgPGh0bWw+XG4gICAgICAgICAgICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICAgICAgICAgICAgICBodG1sIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICAgICAgICAgICAgICAgICAgb3ZlcmZsb3cteTogaGlkZGVuO1xuICAgICAgICAgICAgICAgICAgICAgICAgYmFja2dyb3VuZDogdXJsKC4uL3N0YXRpYy9sdW5hQmFjay5wbmcpY2VudGVyIGNlbnRlciBuby1yZXBlYXQsICB1cmwoLi4vc3RhdGljL3N0YXJTa3kucG5nKTtcbiAgICAgICAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQtc2l6ZTogNDUwcHgsIGNvdmVyO1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICBgfTwvc3R5bGU+XG4gICAgICAgICAgICA8L2h0bWw+XG4gICAgICAgIClcblxuICAgIH1cblxufSJdfQ== */\n/*@ sourceURL=/Users/tomassandstrom/Documents/LunacatsNodeServer/public/pages/index.js */"));
+      }, "html.jsx-350635141{margin:0;width:100%;height:100%;overflow-y:hidden;background:url(../static/lunaBack.png)center center no-repeat,url(../static/starSky.png);background-size:450px,cover;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy90b21hc3NhbmRzdHJvbS9EZXNrdG9wL0x1bmFjYXRzL1dlYnNpdGUvTHVuYWNhdHNOb2RlU2VydmVyL3B1YmxpYy9wYWdlcy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFlNEIsQUFHa0MsU0FDRSxXQUNDLFlBQ00sa0JBQ3lFLHlGQUM5RCw0QkFDckMiLCJmaWxlIjoiL1VzZXJzL3RvbWFzc2FuZHN0cm9tL0Rlc2t0b3AvTHVuYWNhdHMvV2Vic2l0ZS9MdW5hY2F0c05vZGVTZXJ2ZXIvcHVibGljL3BhZ2VzL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy9CZWdpbnMgYnkgc2hvd2luZyBMdW5hY2F0cyBpbWFnZSBmb3IgMS41IHNlY29uZHMsIEkgaG9wZSBhdCBsZWFzdCAjcHJheWluZ1xuLyoqIEx1bmEgSW1hZ2UgY29tcG9uZW50LiAqL1xuaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuZXhwb3J0IGRlZmF1bHQgY2xhc3MgTWFpbkltYWdlIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgICBjb21wb25lbnREaWRNb3VudCA9ICgpID0+IHtcbiAgICAgICAgdGhpcy50aW1lb3V0SGFuZGxlID0gc2V0VGltZW91dCgoKSA9PiB7XG4gICAgICAgICAgICB3aW5kb3cubG9jYXRpb24uaHJlZiA9ICcvTWFpblBhZ2UnO1xuICAgICAgICB9LCAxNTAwKTtcbiAgICB9O1xuICAgIGNvbXBvbmVudFdpbGxVbm1vdW50ID0gKCkgPT4ge1xuICAgICAgICBjbGVhclRpbWVvdXQodGhpcy50aW1lb3V0SGFuZGxlKTtcbiAgICB9XG4gICAgcmVuZGVyKCkge1xuICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgPGh0bWw+XG4gICAgICAgICAgICAgICAgPHN0eWxlIGpzeD57YFxuICAgICAgICAgICAgICAgICAgICBodG1sIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICAgICAgICAgICAgICAgICAgb3ZlcmZsb3cteTogaGlkZGVuO1xuICAgICAgICAgICAgICAgICAgICAgICAgYmFja2dyb3VuZDogdXJsKC4uL3N0YXRpYy9sdW5hQmFjay5wbmcpY2VudGVyIGNlbnRlciBuby1yZXBlYXQsICB1cmwoLi4vc3RhdGljL3N0YXJTa3kucG5nKTtcbiAgICAgICAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQtc2l6ZTogNDUwcHgsIGNvdmVyO1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICBgfTwvc3R5bGU+XG4gICAgICAgICAgICA8L2h0bWw+XG4gICAgICAgIClcblxuICAgIH1cblxufSJdfQ== */\n/*@ sourceURL=/Users/tomassandstrom/Desktop/Lunacats/Website/LunacatsNodeServer/public/pages/index.js */"));
     }
   }]);
 
@@ -3178,13 +3178,13 @@ function (_React$Component) {
 /***/ }),
 
 /***/ 1:
-/*!*******************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Ftomassandstrom%2FDocuments%2FLunacatsNodeServer%2Fpublic%2Fpages%2Findex.js ***!
-  \*******************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Ftomassandstrom%2FDesktop%2FLunacats%2FWebsite%2FLunacatsNodeServer%2Fpublic%2Fpages%2Findex.js ***!
+  \**************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Ftomassandstrom%2FDocuments%2FLunacatsNodeServer%2Fpublic%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Ftomassandstrom%2FDocuments%2FLunacatsNodeServer%2Fpublic%2Fpages%2Findex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Ftomassandstrom%2FDesktop%2FLunacats%2FWebsite%2FLunacatsNodeServer%2Fpublic%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Ftomassandstrom%2FDesktop%2FLunacats%2FWebsite%2FLunacatsNodeServer%2Fpublic%2Fpages%2Findex.js!./");
 
 
 /***/ }),
