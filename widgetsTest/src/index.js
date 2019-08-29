@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 
-import {SendRequest} from './SendRequest';
+import {LidarAndPixyView} from './LidarAndPixyView';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<SendRequest />, document.getElementById('root'));
+ReactDOM.render(<LidarAndPixyView />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
