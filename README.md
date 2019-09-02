@@ -12,8 +12,8 @@ folder Build_Instructions.
 
 ## Other Current Repositories
 
-- **Raspberry Pi Code:** <https://github.com/lunacats/LunacatsRaspberryPi/tree/master/2019-2020>
-- **Arduino Library:** <https://github.com/lunacats/LunacatsArduino>
-- **Controller Code:** <https://github.com/lunacats/Controller>
+- **Raspberry Pi Code:** <https://github.com/UNH-LunaCats-Robotics/LunacatsRaspberryPi/tree/master/2019-2020>
+- **Arduino Library:** <https://github.com/UNH-LunaCats-Robotics/LunacatsArduino>
+- **Controller Code:** <https://github.com/UNH-LunaCats-Robotics/Controller>
 
 *[Join our Discord](https://discord.gg/q4r8ZTM) if you would like to participate in discussions about the code!*
