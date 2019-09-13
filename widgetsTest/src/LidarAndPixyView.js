@@ -68,18 +68,18 @@ export class LidarAndPixyView extends React.Component {
         <RowContainerExtended>
           
           <ColumnContainerExtended>
-          <TransparentCard style={{width:"95%"}}>
+          <Card style={{width:"95%"}}>
             Left Front Lidar: <ProgressBar style={{width:"100%"}} percent={10}/>
-          </TransparentCard>
-          <TransparentCard style={{width:"95%"}}>
+          </Card>
+          <Card style={{width:"95%"}}>
             Right Front Lidar: <ProgressBar style={{width:"100%"}} percent={90}/>
-          </TransparentCard>
-          <TransparentCard style={{width:"95%"}}>
+          </Card>
+          <Card style={{width:"95%"}}>
             Left Back Lidar: <ProgressBar style={{width:"100%"}} percent={40}/>
-          </TransparentCard>
-          <TransparentCard style={{width:"95%"}}>
+          </Card>
+          <Card style={{width:"95%"}}>
             Right Back Lidar: <ProgressBar style={{width:"100%"}} percent={60}/>
-          </TransparentCard>
+          </Card>
           </ColumnContainerExtended>
           <ColumnContainerExtended>
 

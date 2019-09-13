@@ -1,4 +1,3 @@
-const databaseURL = 'mongodb://172.16.50.175:27017'
 const databaseName = 'Fdsignon'
 
 const { urlencoded } = require('body-parser');
