@@ -1,8 +1,14 @@
 import React from 'react';
 import './App.scss';
 import Gamepad from 'react-gamepad'
+import { subscribeToTimer } from './api';
 
 class App extends React.Component {
+  state = {
+    top: 0,
+    left: 0,
+    timestamp: 'no timestamp yet'
+  }
 
   moveBox(event) {
     const increment = 25;
@@ -35,8 +41,14 @@ class App extends React.Component {
     console.log(buttonName, down)
   }
 
-  axisChangeHandler(axisName, value, previousValue) {
-    console.log(axisName, value)
+  //LeftStickX, LeftStickY, RightStickX, RightStickY
+  axisChangeHandler(axisName, value, previousValue, env) {
+    if(axisName === 'LeftStickX') {
+      env.setState({ left: this.state.left + (value * 10)})
+    }
+    if(axisName === 'LeftStickY') {
+      env.setState({ top: this.state.top - (value * 10)})
+    }
   }
 
   buttonDownHandler(buttonName) {
@@ -47,15 +59,13 @@ class App extends React.Component {
     console.log(buttonName, 'up')
   }
 
-
-  state = {
-    top: 0,
-    left: 0
-  }
-
   constructor(props) {
     super(props);
     this.moveBox = this.moveBox.bind(this);
+
+    subscribeToTimer((err, timestamp) => this.setState({ 
+      timestamp 
+    }));
   }
 
   render() {
@@ -67,11 +77,14 @@ class App extends React.Component {
           onDisconnect={this.disconnectHandler}
 
           onButtonChange={this.buttonChangeHandler}
-          onAxisChange={this.axisChangeHandler}
+          onAxisChange={(axisName, value, previousValue) => {
+            this.axisChangeHandler(axisName, value, previousValue, this)
+          }}
+
         >
           <p></p>
         </Gamepad>
-
+        <p>This is the timer value: {this.state.timestamp}</p>
       </div>
     );
   }
