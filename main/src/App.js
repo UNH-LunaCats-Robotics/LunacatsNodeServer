@@ -1,8 +1,20 @@
 import React from 'react';
 import './App.scss';
-import Gamepad from 'react-gamepad'
 import { subscribeToTimer } from './api';
+import Controller from './ControlDisplay/Controller'
 
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App App-header">
+        <Controller/>
+      </div>
+    );
+  }
+}
+
+export default App;
+/*
 class App extends React.Component {
   state = {
     top: 0,
@@ -92,3 +104,4 @@ class App extends React.Component {
 }
 
 export default App;
+//*/
