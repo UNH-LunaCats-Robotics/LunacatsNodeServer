@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client';
 //const socket = openSocket('http://localhost:3002');
-const socket = openSocket('http://10.0.10.14:3002');
+const socket = openSocket('http://10.0.10.11:3002');
 
 function subscribeToTimer(cb) {
     console.log("hello");
@@ -16,8 +16,7 @@ function startTimer(interval) {
 }
 
 function sendEvent(e, v) {
-    console.log("Event: " + e);
-    console.log("Value: " + v);
+    console.log(`Event: ${e}   Value: ${v}`);
     socket.emit(e, v);
 }
 

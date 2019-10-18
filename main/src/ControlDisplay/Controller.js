@@ -1,6 +1,6 @@
 import React from 'react';
 import Gamepad from 'react-gamepad'
-import { subscribeToTimer, startTimer } from '.././api';
+//import { subscribeToTimer, startTimer } from '.././api';
 import { sendEvent } from '.././api';
 
 class Controller extends React.Component {
@@ -44,17 +44,6 @@ class Controller extends React.Component {
         return angle;
     }
 
-    constructor(props) {
-        super(props);
-
-        /*subscribeToTimer((err, timestamp) => {
-            this.setState({ time: timestamp });
-            console.log(timestamp);
-        });*/
-
-        //startTimer(1000);
-      }
-
     setButtonColor(buttonName, color) {
         if(buttonName === 'A') this.setState({ y: color});
         if(buttonName === 'Y') this.setState({x: color});
@@ -91,29 +80,29 @@ class Controller extends React.Component {
         var angle = this.getAngle(xL, yL);
 
         //How far the joystick is tilted
-        var intensity = Math.max(xL, yL);
+        var intensity = Math.max(Math.abs(xL), Math.abs(yL));
         var pushed = 0;
         if(intensity > 0)
             pushed = 1;
     
         console.log("Angle: ", angle, " Intensity: ", intensity);
         if(axisName === 'LeftStickX' || axisName === 'LeftStickY')
-            sendEvent('joystick', "L:" + angle + ":" + pushed);
+            sendEvent('joystick', `L:${angle}:${pushed}`);
         else
-            sendEvent('joystick', "R:" + angle + ":" + pushed);
+            sendEvent('joystick', `R:${angle}:${pushed}`);
     }
 
     //NOTE: Default Button Names do not match buttons on controller
     buttonDownHandler(buttonName) {
         console.log(buttonName, "down");
         this.setButtonColor(buttonName, "gray");
-        sendEvent('button', buttonname + ":" + 1);
+        sendEvent('button', `${buttonName}:1`);
     }
 
     buttonUpHandler(buttonName) {
         console.log(buttonName, "up");
         this.setButtonColor(buttonName, "lightgray");
-        sendEvent('button', buttonname + ":" + 0);
+        sendEvent('button', `${buttonName}:0`);
     }
 
     connectHandler(gamepadIndex) {
