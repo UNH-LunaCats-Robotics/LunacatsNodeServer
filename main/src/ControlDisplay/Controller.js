@@ -41,6 +41,10 @@ class Controller extends React.Component {
         if(angle === -0)
             angle = 0;
 
+        angle -= 90;
+        if(angle < 0)
+        angle += 360;
+
         return angle;
     }
 
@@ -76,7 +80,7 @@ class Controller extends React.Component {
             xL = this.state.rightX - 20;
             yL = -(this.state.rightY - 20);
         }
-        
+
         var angle = this.getAngle(xL, yL);
 
         //How far the joystick is tilted
