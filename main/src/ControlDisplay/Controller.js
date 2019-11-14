@@ -1,7 +1,7 @@
 import React from 'react';
 import Gamepad from 'react-gamepad'
 //import { subscribeToTimer, startTimer } from '.././api';
-import { sendEvent } from '.././api';
+import { sendEvent, startup } from '.././api';
 
 class Controller extends React.Component {
     state = {
@@ -14,6 +14,19 @@ class Controller extends React.Component {
         a: "lightgray",
         b: "lightgray",
         time: 'no timestamp yet'
+    }
+
+    addPoint(p) {
+        console.log(`Lidar Point: (${p[0]}, ${p[1]}, ${p[2]})`);
+    }
+
+    updatePosition(l) {
+        console.log(`Lidar Point: (${l[0]}, ${l[1]}, ${l[2]}) at ${l[3]}`);
+    }
+
+    constructor() {
+        super();
+        startup(this);
     }
 
     getAngle(xL, yL) {
@@ -91,9 +104,9 @@ class Controller extends React.Component {
     
         console.log("Angle: ", angle, " Intensity: ", intensity);
         if(axisName === 'LeftStickX' || axisName === 'LeftStickY')
-            sendEvent('joystick', `L:${angle}:${pushed}`);
+            sendEvent('joystick', `L:${pushed}:${angle}`);
         else
-            sendEvent('joystick', `R:${angle}:${pushed}`);
+            sendEvent('joystick', `R:${pushed}:${angle}`);
     }
 
     //NOTE: Default Button Names do not match buttons on controller
