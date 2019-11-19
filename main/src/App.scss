@@ -43,3 +43,25 @@
   font-size: 150%;
   background-color: lightgray;
 }
+
+.GridBackground{
+  width:384px;
+  height:256px;
+  background-color: lightgray;
+}
+
+.GridPoint{
+  border-radius:50%;
+  width:4px;
+  height:4px;
+  position: relative;
+  background-color:green;
+}
+
+.RobotPoint{
+  border-radius:50%;
+  width:4px;
+  height:4px;
+  position: relative;
+  background-color:black;
+}

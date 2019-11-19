@@ -1,7 +1,7 @@
 import React from 'react';
 import Gamepad from 'react-gamepad'
 //import { subscribeToTimer, startTimer } from '.././api';
-import { sendEvent, startup } from '.././api';
+import { sendEvent } from '.././api';
 
 class Controller extends React.Component {
     state = {
@@ -24,10 +24,10 @@ class Controller extends React.Component {
         console.log(`Lidar Point: (${l[0]}, ${l[1]}, ${l[2]}) at ${l[3]}`);
     }
 
-    constructor() {
+    /*constructor() {
         super();
-        startup(this);
-    }
+        //startup(this);
+    }*/
 
     getAngle(xL, yL) {
         if(xL === -0)
@@ -171,7 +171,6 @@ class Controller extends React.Component {
                 <div className = "JoystickRim m-2">
                     <div className="JoystickCircle" style={{ top: this.state.rightY + "px", left: this.state.rightX + "px" }}/>
                 </div>
-                
             </div>
         )
     }
