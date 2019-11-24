@@ -48,13 +48,16 @@
   width:384px;
   height:256px;
   background-color: lightgray;
+  border-color: yellow;
+  border-width: 2;
+  border-style: solid;
 }
 
 .GridPoint{
   border-radius:50%;
   width:4px;
   height:4px;
-  position: relative;
+  position: absolute;
   background-color:green;
 }
 

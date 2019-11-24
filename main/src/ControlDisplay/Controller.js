@@ -16,14 +16,6 @@ class Controller extends React.Component {
         time: 'no timestamp yet'
     }
 
-    addPoint(p) {
-        console.log(`Lidar Point: (${p[0]}, ${p[1]}, ${p[2]})`);
-    }
-
-    updatePosition(l) {
-        console.log(`Lidar Point: (${l[0]}, ${l[1]}, ${l[2]}) at ${l[3]}`);
-    }
-
     /*constructor() {
         super();
         //startup(this);

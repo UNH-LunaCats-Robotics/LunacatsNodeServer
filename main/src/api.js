@@ -17,20 +17,17 @@ function startTimer(interval) {
 
 function startup(controller) {
     console.log("Starting up");
-    socket.on('connection', function(socket) {
-        console.log('a user connected: ' + socket);
-        
-        //Lidar point -> X:Y:Z
-        socket.on('lidar', (point) => {
-            var p = point.split(":");
-            controller.addPoint(p);
-        });
 
-        //Robot location -> X:Y:Z:A
-        socket.on('robot', (location) => {
-            var l = location.split(":");
-            controller.addPoint(l);
-        });
+    //Lidar point -> X:Y:Z
+    socket.on('lidar', (point) => {
+        var p = point.split(":");
+        controller.addPoint(p);
+    });
+
+    //Robot location -> X:Y:Z:A
+    socket.on('robot', (location) => {
+        var l = location.split(":");
+        controller.addPoint(l);
     });
 }
 
