@@ -27,9 +27,11 @@ class RobotPoint extends React.Component {
 
 class GameField extends React.Component {
 
-    points = [];
-    robotLoc = [0, 0, 0, 0];
-    static count = 0;
+    state = {
+        points: [],
+        robotLoc: [0, 0, 0, 0],
+        count: 0
+    };
 
     inchesToFeet(v) {
         return v / 12.0;
@@ -53,7 +55,7 @@ class GameField extends React.Component {
     }
 
     addPoint(p) {
-        console.log(`Lidar Point: (${p[0]}, ${p[1]}, ${p[2]}) Key: ${GameField.count}`);
+        console.log(`Lidar Point: (${p[0]}, ${p[1]}, ${p[2]}) Key: ${this.state.count}`);
         var xp = this.convert(p[0]);
         var yp = this.convert(p[1]);
         var zp = this.convert(p[2]);
@@ -61,19 +63,18 @@ class GameField extends React.Component {
             console.log("Point out of bounds");
             return;
         }
-        this.points.push({
-            key: GameField.count,
+        this.setState({points: this.state.points.push({
+            key: this.state.count,
             x: xp,
             y: yp,
             z: zp
-        });
-        GameField.count++;
-        this.render();
+        })});
+        this.setState({count: this.state.count + 1});
     }
 
     updatePosition(l) {
         console.log(`Robot Position: (${l[0]}, ${l[1]}, ${l[2]}) at ${l[3]}`);
-        this.robotLoc = [l[0], l[1], l[2], l[3]];
+        this.setState({robotLoc: [l[0], l[1], l[2], l[3]]});
         this.render();
     }
 
@@ -105,12 +106,12 @@ class GameField extends React.Component {
     render() {
         return (
             <div className="GridBackground" style={{backgroundColor: "white"}}>
-                {this.points.map( (inc) => 
+                {this.state.points.map( (inc) => 
                     {
                         return <GridPoint key = {inc.key} x = {inc.x} y = {inc.y} color = {this.getColor(inc.z)}/>
                     }
                 )}
-                <RobotPoint x= {this.robotLoc[0]} y = {this.robotLoc[1]}/>
+                <RobotPoint x= {this.state.robotLoc[0]} y = {this.state.robotLoc[1]}/>
             </div>
         )
     }
